@@ -1,9 +1,6 @@
-var http = require("http");
-
-
-
-
-
+var http = require('http')
+  , Beer = require('./models/beer')
+  ;
 
 
 http.createServer(function(req, res) {
