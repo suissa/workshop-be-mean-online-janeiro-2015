@@ -1,6 +1,7 @@
 var http = require('http')
-  , Beer = require('./models/beer')
+  , Controller = require('./controllers/beers')
   ;
+
 
 
 http.createServer(function(req, res) {
@@ -11,73 +12,16 @@ http.createServer(function(req, res) {
 
   switch(url) {
     case '/beers/create':
-      var dados = { name: 'Skol'
-        , description: 'Mijo de rato'
-        , alcohol: 4.5
-        , price: 3.0
-        , category: 'pilsen'
-      }
-      , model = new Beer(dados);
-
-      model.save(function (err, data) {
-        if (err){
-          console.log('Erro: ', err);
-          res.end('Erro: ' + err);
-        }
-        else{
-          console.log('Sucesso: ', data);
-          res.end('Sucesso: ' + data);
-        }
-      });
+      Controller.create(req, res);
       break;
     case '/beers/retrieve':
-      var query = {};
-
-      Beer.find(query, function (err, data) {
-        if (err){
-          console.log('Erro: ', err);
-          res.end('Erro: ' + err);
-        }
-        else{
-          console.log('Sucesso: ', data);
-          res.end('Sucesso: ' + data);
-        }
-      });
+      Controller.retrieve(req, res);
       break;
     case '/beers/update':
-      var query = {}
-        , mod = { name: 'Brahma'
-          , alcohol: 4
-          , price: 6
-          , category: 'pilsen'
-        };
-
-      Beer.update(query, mod, function (err, data) {
-        if (err){
-          console.log('Erro: ', err);
-          res.end('Erro: ' + err);
-        }
-        else{
-          console.log('Sucesso: ', data);
-          res.end('Sucesso: ' + data);
-        }
-      });
-
+      Controller.update(req, res);
       break;
     case '/beers/delete':
-      var query = {};
-
-      Beer.remove(query, function(err, data) {
-        if (err){
-          console.log('Erro: ', err);
-          res.end('Erro: ' + err);
-        }
-        else{
-          console.log('Sucesso: ', data);
-          res.end('Sucesso: ' + data);
-        }
-      });
-
+      Controller.delete(req, res);
       break;
   }
 
