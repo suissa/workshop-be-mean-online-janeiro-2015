@@ -1,2 +1,4 @@
 node.js/mongoose/node_modules
 node.js/mongoose/node_modules/*
+node.js/express/node_modules/
+node.js/express/node_modules/*
