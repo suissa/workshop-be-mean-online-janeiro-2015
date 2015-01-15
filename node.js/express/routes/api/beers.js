@@ -19,8 +19,13 @@ router.get('/:id', function(req, res) {
 });
 
 // UPDATE
-router.put('/:id/edit', function(req, res) {
+router.put('/:id', function(req, res) {
   Controller.update(req, res);
+});
+
+// DELETE
+router.delete('/:id', function(req, res) {
+  Controller.delete(req, res);
 });
 
 module.exports = router;

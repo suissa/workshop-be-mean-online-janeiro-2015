@@ -72,7 +72,7 @@ module.exports = {
 
   },
   delete: function(req, res) {
-    var query = {};
+    var query = {_id: req.params.id};
 
     Model.remove(query, function(err, data) {
       if (err){
