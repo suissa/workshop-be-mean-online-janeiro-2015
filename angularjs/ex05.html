@@ -6,9 +6,9 @@
     <p>
       <!-- Para utilizarmos um filtro usamos o | 
           nesse caso estamos usando o filtro de uppercase
-          que coloca em maiúsculo e o reverseName criado por nós
+          que coloca em maiúsculo e o reverseString criado por nós
        -->
-      <h3>Olá mundo, {{ nome | reverseName | uppercase }}</h3>
+      <h3>Olá mundo, {{ nome | reverseString }}</h3>
 
       <!-- Adicionamos um input para inserirmos um valor para nome
         adicionamos o atributo nd-model para linkarmos o valor
@@ -30,7 +30,7 @@
     <script src="angular.min.js"></script>
     <script>
       angular.module('workshopBeMEAN', [])
-      .filter('reverseName', function () {
+      .filter('reverseString', function () {
         return function (text) {
           if(text)
             return text.split("").reverse().join("");
