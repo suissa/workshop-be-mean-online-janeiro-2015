@@ -50,7 +50,6 @@ module.exports = {
   update: function(req, res) {
     // req.params contém as variáveis que vc setou na rota
     var query = {_id: req.params.id};
-    console.log('query: ', query);
 
     var mod = req.body;
 
