@@ -33,6 +33,20 @@ module.exports = {
       }
     });
   },
+  findOne: function(req, res) {
+    var query = {_id: req.params.id};
+
+    Model.findOne(query, function (err, data) {
+      if (err){
+        console.log('Erro: ', err);
+        res.json(err);
+      }
+      else{
+        console.log('Sucesso: ', data);
+        res.json(data);
+      }
+    });
+  },
   update: function(req, res) {
     // req.params contém as variáveis que vc setou na rota
     var query = {_id: req.params.id};

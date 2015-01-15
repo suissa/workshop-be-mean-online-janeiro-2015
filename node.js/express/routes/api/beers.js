@@ -14,6 +14,10 @@ router.get('/', function(req, res) {
   Controller.retrieve(req, res);
 });
 
+router.get('/:id', function(req, res) {
+  Controller.findOne(req, res);
+});
+
 // UPDATE
 router.put('/:id/edit', function(req, res) {
   Controller.update(req, res);
