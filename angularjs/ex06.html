@@ -34,11 +34,11 @@
     </p>
     <p>
         <strong>Número de casas decimais.</strong>
-        Number: {{ 1234 | number:2 }}
+        Number: {{ 1234 | number:20 }}
     </p>
     <p>
         <strong>Formatação de datas com timestamp</strong>
-        Date: {{ 1417735217479 | date:'dd/MM/yyyy HH:mm:ss Z'}}
+        Date: {{ 1421362195200 | date:'dd/MM/yyyy HH:mm:ss Z'}}
 
     </p>
     <p> 
@@ -47,7 +47,7 @@
         default currency symbol ($): 
           <span id="currency-default">{{amount | currency}}</span><br>
         custom currency identifier (R$): 
-          <span>{{amount | currency:"R$"}}</span>
+          <span>{{amount | currency:"R$ "}}</span>
     </p>
     
 
