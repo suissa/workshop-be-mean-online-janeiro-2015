@@ -15,8 +15,8 @@ router.get('/', function(req, res) {
 });
 
 // UPDATE
-router.get('/:id/edit', function(req, res) {
-  Controller.retrieve(req, res);
+router.put('/:id/edit', function(req, res) {
+  Controller.update(req, res);
 });
 
 module.exports = router;

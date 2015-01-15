@@ -36,20 +36,16 @@ module.exports = {
   update: function(req, res) {
     // req.params contém as variáveis que vc setou na rota
     var query = {_id: req.params.id};
+    console.log('query: ', query);
 
-    var mod = {
-      name: 'Brahma',
-      alcohol: 4,
-      price: 6,
-      category: 'pilsen'
-    };
+    var mod = req.body;
 
     var optional = {
       upsert: false,
       multi: true
     };
 
-    Model.update(query, mod, optional, function (err, data) {
+    Model.update(query, mod, function (err, data) {
       if (err){
         console.log('Erro: ', err);
         res.json(err);
