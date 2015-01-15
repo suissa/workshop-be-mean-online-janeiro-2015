@@ -34,7 +34,8 @@ module.exports = {
     });
   },
   update: function(req, res) {
-    var query = {name: /skol/i};
+    // req.params contém as variáveis que vc setou na rota
+    var query = {_id: req.params.id};
 
     var mod = {
       name: 'Brahma',
