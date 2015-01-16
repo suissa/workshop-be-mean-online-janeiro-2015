@@ -2,3 +2,9 @@ node.js/mongoose/node_modules
 node.js/mongoose/node_modules/*
 node.js/express/node_modules/
 node.js/express/node_modules/*
+angularjs/angular-seed/node_modules/
+angularjs/angular-seed/node_modules/*
+angularjs/angular-seed/bower_components/
+angularjs/angular-seed/bower_components/*
+projeto-final/node_modules/
+projeto-final/node_modules/*
