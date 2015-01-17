@@ -10,3 +10,5 @@ ul
   li Description: {{ beer.description }}
   li 
       a(data-ng-href='beers/{{ beer._id }}/edit') Editar
+  li 
+      button(data-ng-click='delete(beer)') EXCLUIR

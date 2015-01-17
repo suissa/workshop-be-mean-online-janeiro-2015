@@ -57,6 +57,25 @@ angular.module('myApp.controllers', [])
       console.log('ERRO', data);
     });
 
+    $scope.delete = function (beer) {
+
+      if(confirm('Deseja excluir a cerveja ' + beer.name + '?')){
+        $http({
+          method: 'DELETE',
+          url: url
+        }).
+        success(function (data, status, headers, config) {
+          $scope.beer = data;
+          console.log('SUCESSO', data);
+        }).
+        error(function (data, status, headers, config) {
+          $scope.error = 'Error!';
+          console.log('ERRO', data);
+        });
+      }
+
+    }
+
   })
   .controller('BeersCreateController', function ($scope, $http) {
 
