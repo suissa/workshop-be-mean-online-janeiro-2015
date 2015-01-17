@@ -25,34 +25,29 @@ angular.module('myApp.controllers', [])
     // write Ctrl here
 
   })
-  .controller('BeersListController', function ($scope, $http) {
+  .controller('BeersListController', function ($scope, $http, BeerService) {
 
-    $http({
-      method: 'GET',
-      url: '/api/beers'
-    }).
-    success(function (data, status, headers, config) {
+    BeerService.find()
+    .success(function (data, status, headers, config) {
       $scope.beers = data;
       console.log('SUCESSO', data);
-    }).
-    error(function (data, status, headers, config) {
+    })
+    .error(function (data, status, headers, config) {
       $scope.error = 'Error!';
       console.log('ERRO', data);
     });
 
   })
-  .controller('BeersShowController', function ($scope, $http, $routeParams, $window) {
+  .controller('BeersShowController', function ($scope, $http, $routeParams, $window, BeerService) {
 
     var url = '/api/beers/' + $routeParams.id
-    $http({
-      method: 'GET',
-      url: url
-    }).
-    success(function (data, status, headers, config) {
+
+    BeerService.findOne($routeParams.id)
+    .success(function (data, status, headers, config) {
       $scope.beer = data;
       console.log('SUCESSO', data);
-    }).
-    error(function (data, status, headers, config) {
+    })
+    .error(function (data, status, headers, config) {
       $scope.error = 'Error!';
       console.log('ERRO', data);
     });
