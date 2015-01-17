@@ -55,15 +55,13 @@ angular.module('myApp.controllers', [])
     $scope.delete = function (beer) {
 
       if(confirm('Deseja excluir a cerveja ' + beer.name + '?')){
-        $http({
-          method: 'DELETE',
-          url: url
-        }).
-        success(function (data, status, headers, config) {
+        BeerService
+        .remove(beer)
+        .success(function (data, status, headers, config) {
           $scope.beer = data;
           console.log('SUCESSO', data);
-        }).
-        error(function (data, status, headers, config) {
+        })
+        .error(function (data, status, headers, config) {
           $scope.error = 'Error!';
           console.log('ERRO', data);
         });
@@ -74,7 +72,7 @@ angular.module('myApp.controllers', [])
     }
 
   })
-  .controller('BeersCreateController', function ($scope, $http) {
+  .controller('BeersCreateController', function ($scope, $http, BeerService) {
 
 
     $scope.save = function (beer) {
@@ -84,16 +82,13 @@ angular.module('myApp.controllers', [])
 
       console.log('Dados: ', dados);
 
-      $http({
-        method: 'POST',
-        url: url,
-        data: dados
-      }).
-      success(function (data, status, headers, config) {
+      BeerService
+      .create(dados)
+      .success(function (data, status, headers, config) {
         $scope.beer = data;
         console.log('SUCESSO', data);
-      }).
-      error(function (data, status, headers, config) {
+      })
+      .error(function (data, status, headers, config) {
         $scope.error = 'Error!';
         console.log('ERRO', data);
       });
@@ -101,18 +96,16 @@ angular.module('myApp.controllers', [])
     }
 
   })
-  .controller('BeersEditController', function ($scope, $http, $routeParams) {
+  .controller('BeersEditController', function ($scope, $http, $routeParams, BeerService) {
 
     var url = '/api/beers/' + $routeParams.id
-    $http({
-      method: 'GET',
-      url: url
-    }).
-    success(function (data, status, headers, config) {
+    BeerService
+    .findOne($routeParams.id)
+    .success(function (data, status, headers, config) {
       $scope.beer = data;
       console.log('SUCESSO', data);
-    }).
-    error(function (data, status, headers, config) {
+    })
+    .error(function (data, status, headers, config) {
       $scope.error = 'Error!';
       console.log('ERRO', data);
     });
@@ -122,16 +115,13 @@ angular.module('myApp.controllers', [])
 
       console.log('Dados: ', dados);
 
-      $http({
-        method: 'PUT',
-        url: url,
-        data: dados
-      }).
-      success(function (data, status, headers, config) {
+      BeerService
+      .update(dados)
+      .success(function (data, status, headers, config) {
         $scope.beer = data;
         console.log('SUCESSO', data);
-      }).
-      error(function (data, status, headers, config) {
+      })
+      .error(function (data, status, headers, config) {
         $scope.error = 'Error!';
         console.log('ERRO', data);
       });
