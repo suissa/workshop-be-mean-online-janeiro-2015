@@ -1,0 +1,10 @@
+h2 Consulta da cerveja {{ beer.name }}
+h3 Nois que voa
+h4 {{ error }}
+
+ul
+  li Name: {{ beer.name }}
+  li Price: {{ beer.price | currency:"R$ " }}
+  li Category: {{ beer.category }}
+  li Alcohool: {{ beer.alcohool }}
+  li Description: {{ beer.description }}
