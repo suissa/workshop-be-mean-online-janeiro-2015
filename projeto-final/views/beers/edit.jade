@@ -1,0 +1,28 @@
+h1 Alteração da Cerveja {{ beer.name }}
+
+form
+
+  label(for='name') 
+    span.form-label Name: 
+    input(type='text', name='name', data-ng-model='beer.name')
+
+  label(for='price') 
+    span.form-label Price: 
+    input(type='text', name='price', data-ng-model='beer.price')
+
+  label(for='alcohol') 
+    span.form-label Alcohol: 
+    input(type='text', name='alcohol', data-ng-model='beer.alcohol')
+
+  label(for='category') 
+    span.form-label Category: 
+    input(type='text', name='category', data-ng-model='beer.category')
+
+  label(for='description') 
+    span.form-label Description: 
+    textarea(name='description', data-ng-model='beer.description')
+
+  button(data-ng-click='save(beer)') Salvar
+
+
+

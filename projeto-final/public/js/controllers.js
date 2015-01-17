@@ -57,7 +57,36 @@ angular.module('myApp.controllers', [])
       console.log('ERRO', data);
     });
 
+  })
+  .controller('BeersCreateController', function ($scope, $http) {
+
+
+    $scope.save = function (beer) {
+      var url = '/api/beers/'
+        , dados = beer
+        ;
+
+      console.log('Dados: ', dados);
+
+      $http({
+        method: 'POST',
+        url: url,
+        data: dados
+      }).
+      success(function (data, status, headers, config) {
+        $scope.beer = data;
+        console.log('SUCESSO', data);
+      }).
+      error(function (data, status, headers, config) {
+        $scope.error = 'Error!';
+        console.log('ERRO', data);
+      });
+
+    }
+
   });
+
+
 
 
 
