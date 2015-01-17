@@ -37,6 +37,25 @@ angular.module('myApp.controllers', [])
       console.log('ERRO', data);
     });
 
+    $scope.delete = function (beer) {
+
+      if(confirm('Deseja excluir a cerveja ' + beer.name + '?')){
+        BeerService
+        .remove(beer)
+        .success(function (data, status, headers, config) {
+          $scope.beer = data;
+          console.log('SUCESSO', data);
+          var index = $scope.beers.indexOf(beer);
+          $scope.beers.splice(index, 1);
+        })
+        .error(function (data, status, headers, config) {
+          $scope.error = 'Error!';
+          console.log('ERRO', data);
+        });
+      }
+
+    }
+
   })
   .controller('BeersShowController', function ($scope, $http, $routeParams, $window, BeerService) {
 
