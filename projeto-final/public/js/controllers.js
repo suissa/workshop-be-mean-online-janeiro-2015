@@ -101,6 +101,26 @@ angular.module('myApp.controllers', [])
       console.log('ERRO', data);
     });
 
+    $scope.save = function (beer) {
+      var dados = beer;
+
+      console.log('Dados: ', dados);
+
+      $http({
+        method: 'PUT',
+        url: url,
+        data: dados
+      }).
+      success(function (data, status, headers, config) {
+        $scope.beer = data;
+        console.log('SUCESSO', data);
+      }).
+      error(function (data, status, headers, config) {
+        $scope.error = 'Error!';
+        console.log('ERRO', data);
+      });
+
+    }
   });
 
 
