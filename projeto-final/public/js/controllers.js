@@ -84,6 +84,23 @@ angular.module('myApp.controllers', [])
 
     }
 
+  })
+  .controller('BeersEditController', function ($scope, $http, $routeParams) {
+
+    var url = '/api/beers/' + $routeParams.id
+    $http({
+      method: 'GET',
+      url: url
+    }).
+    success(function (data, status, headers, config) {
+      $scope.beer = data;
+      console.log('SUCESSO', data);
+    }).
+    error(function (data, status, headers, config) {
+      $scope.error = 'Error!';
+      console.log('ERRO', data);
+    });
+
   });
 
 
