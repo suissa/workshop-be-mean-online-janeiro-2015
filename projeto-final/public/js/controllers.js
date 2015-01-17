@@ -41,7 +41,7 @@ angular.module('myApp.controllers', [])
     });
 
   })
-  .controller('BeersShowController', function ($scope, $http, $routeParams) {
+  .controller('BeersShowController', function ($scope, $http, $routeParams, $window) {
 
     var url = '/api/beers/' + $routeParams.id
     $http({
@@ -72,6 +72,8 @@ angular.module('myApp.controllers', [])
           $scope.error = 'Error!';
           console.log('ERRO', data);
         });
+
+        $window.location.href = '/beers';
       }
 
     }
